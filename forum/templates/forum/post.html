@@ -1,0 +1,6 @@
+{% extends 'forum/base.html' %}
+{% block content %}
+{% load static %}
+<div class="title"><h2>{{ post.title.by_slug }}</h2></div>\
+<div class="title_content">{{ post.data }}</div>
+{% endblock %}

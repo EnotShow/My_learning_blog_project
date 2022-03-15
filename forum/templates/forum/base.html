@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'forum/css/style.css' %}">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <div class="box">
+        <div class="container">
+            
+            <div class="head__iner">
+                <div class="logo">
+                    <h1>MyForum.com</h1>
+                </div>
+                <div class="head_buttons">
+                    <div class="site_buttons">
+                        {% for m in menu %}
+                        <a href="{% url m.url_name %}">{{ m.title }}</a>
+                        {% endfor %}
+                    </div>
+                    <div class="user_buttons">
+                        <div class="log_in"><a href="">Log in</a></div>
+                        <div class="sign_up"><a href="">Sign up</a></div>
+                    </div>
+                </div>
+
+                <div class="content">
+                    
+                    {% block content %}
+                    {% endblock %}
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
