@@ -23,8 +23,14 @@
                         {% endfor %}
                     </div>
                     <div class="user_buttons">
-                        <div class="log_in"><a href="">Log in</a></div>
-                        <div class="sign_up"><a href="">Sign up</a></div>
+                        {% if request.user.is_authenticated %}
+                            <div class="auth"><a href="{% url 'profile' %}">{{ user.username }}</a></div>
+                            <div class="auth"><a href="{% url 'logout' %}">log out</a></div>
+                        {% else %}
+                            {% for a in auth %}
+                            <div class="auth"><a href="{% url a.url_name %}">{{ a.title }}</a></div>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
 
@@ -33,6 +39,10 @@
                     {% block content %}
                     {% endblock %}
 
+                </div>
+
+                <div>
+                    <center>ENDSITE</center>
                 </div>
 
             </div>

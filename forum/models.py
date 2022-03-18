@@ -7,7 +7,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255, verbose_name="Заголовок")
     content = models.TextField(blank=True, verbose_name="Текст статьи")
     photo = models.ImageField(upload_to="photos/%Y/%m/%d/", blank=True, verbose_name="Фото")
-    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Пользователь')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=False, verbose_name='Пользователь')
     slug = models.SlugField(unique=True, verbose_name='Слаг')
     time_create = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
     time_update = models.DateTimeField(auto_now=True, verbose_name="Время изменения")
@@ -37,7 +37,7 @@ class Category(models.Model):
         ordering = ['pk']
 
     def get_absolute_url(self):
-        return reverse('cat', kwargs={'post_slug': self.slug})
+        return reverse('cat', kwargs={'cat_slug': self.slug})
 
     def __str__(self):
         return self.name

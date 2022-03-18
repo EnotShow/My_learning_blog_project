@@ -1,11 +1,10 @@
 {% extends 'forum/base.html' %}
-{% load static %}
 {% block content %}
     {% for post in posts %}
         <div class="post">
             <div class="firstline">
                 <div class="name"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>
-                <div class="category"><a href="">{{ post.cat }}</a></div>
+                <div class="category"><a href="#">{{ post.cat }}</a></div>
                 <div class="user"><a href="">{{ post.user }}</a></div>
             </div>
             <div class="secondline">
@@ -15,5 +14,5 @@
                 <div class="text">{{ post.content|truncatewords:150 }}</div>
             </div>
         </div>
-    {% endfor %}
+        {% endfor %}
 {% endblock %}
