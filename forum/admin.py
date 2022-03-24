@@ -10,9 +10,9 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('user', 'title', 'slug', 'content', 'photo', 'is_published')
+    list_display = ('title', 'slug', 'content', 'photo', 'is_published')
 
 
-# @admin.register(Comment)
-# class PostAdmin(admin.ModelAdmin):
-#     list_display = ('user', 'content', 'time_create', 'time_update')
+@admin.register(Comment)
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('content', 'time_create')

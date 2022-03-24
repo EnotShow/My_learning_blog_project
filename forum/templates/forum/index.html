@@ -15,4 +15,22 @@
             </div>
         </div>
         {% endfor %}
+
+        <center><div class="pagination">
+        {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}"><<</a>
+        {% endif %}
+                {% if page_obj.has_other_pages %}
+                {% for p in paginator.page_range %}
+                {% if page_obj.number == p %}
+                    <a>{{ p }}|</a>
+                {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:7%}
+                <a href="?page={{ p }}">{{ p }}|</a>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">>></a>
+        {% endif %}
+        </div></center>
 {% endblock %}

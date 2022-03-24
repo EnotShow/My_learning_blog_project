@@ -3,4 +3,19 @@
 {% load static %}
 <div class="title"><h2>{{ post.title }}</h2></div>
 <div class="title_content">{{ post.content }}</div>
+<br><br><br><br><br><br>
+{% if request.user.is_authenticated %}
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+    {% csrf_token %}
+    {{ form.media }}
+    {{ form.as_p }}
+    <input type="submit" value="Send message">
+    </form>
+{% endif %}<br>
+<center><h3>Comments</h3></center>
+{% for comment in post.comment.all %}
+    {{ comment.user }}<br>
+    {{ comment.content }}
+    <br><br>
+{% endfor %}
 {% endblock %}

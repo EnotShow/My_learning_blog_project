@@ -1,8 +1,9 @@
 {% extends 'forum/base.html' %}
-<h1>Hello from Django</h1>
 {% block content %}
 
-    <form method="post">{% csrf_token %}
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+    {% csrf_token %}
+    {{ form.media }}
     {{ form.as_p }}
     <input type="submit" value="Send message">
     </form>
